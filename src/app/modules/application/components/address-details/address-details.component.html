@@ -1,0 +1,29 @@
+<div class="container pt-5">
+    <div class="row">
+
+        <form #addressDetails>
+            <div class="form-outline">
+                <label class="form-label" for="street">Street :</label>
+                <input type="tel" id="street" class="form-control" placeholder="Enter Street" [(value)]="addrDetails.street.value" />
+            </div>
+            <br>
+
+            <div class="form-outline">
+                <label class="form-label" for="city">City :</label>
+                <input type="tel" id="city" class="form-control" placeholder="Enter City Name" [(value)]="addrDetails.city.value"/>
+            </div>
+            <br>
+
+            <div class="form-outline">
+                <label class="form-label" for="state">State:</label>
+                <input type="tel" id="state" class="form-control" placeholder="Enter State Name" [(value)]="addrDetails.state.value"/>
+            </div>
+            <br>
+
+            <div>
+                <button class="back-btn" (click)="backBtnClick(addressDetails)">Back</button>
+                <button class="next-btn" (click)="nextBtnClick(addressDetails)">Next</button>
+            </div>
+        </form>
+    </div>
+</div>

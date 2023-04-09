@@ -1,0 +1,18 @@
+<form [formGroup]="dataForm">
+    <div>
+        <input type="text" placeholder="Name" formControlName="name">
+    </div>
+    <div>
+        <input type="text" placeholder="Address" formControlName="address">
+    </div>
+    <div>
+        <input type="text" placeholder="Phone" formControlName="phone">
+    </div>
+    <div>
+        <input type="submit" (click)="onSubmit()">
+    </div>
+</form>
+
+
+
+<button class="btn btn-warning" (click)="updateUser()"> Update User</button>

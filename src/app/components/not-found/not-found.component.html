@@ -1,0 +1,156 @@
+<!-- <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+    <div>
+        <input type="text" formControlName="fName"><br>
+
+        <input type="text" formControlName="lName"><br>
+
+        <input type="email" formControlName="email"><br>
+
+        <input type="tel" formControlName="mobileNumber"><br>
+
+        <button class="btn btn-primary"> Submit </button>
+
+    </div>
+
+</form> -->
+
+<button class="btn btn-primary" routerLink="data-post" (click)="postData()">Data Post</button>
+
+
+<div>
+    <form [formGroup]="projectForm">
+
+        <div [formGroupName]="'projectData'">
+
+            <!-- <div>
+                <label class="form-label" for="name">Project Name</label>
+                <input type="text" class="form-control" formControlName="projectName">
+                <span class="text-danger"
+                    *ngIf="projectForm.get('projectData.projectName')?.hasError('required') && projectForm.get('projectData.projectName')?.touched">Enter
+                    Project Name</span>
+                <span class="text-danger"
+                    *ngIf="projectForm.get('projectData.projectName')?.hasError('minlength') && projectForm.get('projectData.projectName')?.touched">Enter
+                    more than 10 characters</span>
+                <span class="text-danger"
+                    *ngIf="projectForm.get('projectData.projectName')?.hasError('maxlength') && projectForm.get('projectData.projectName')?.touched">Enter
+                    less than 20 characters</span>
+                <span class="text-danger"
+                    *ngIf="projectForm.get('projectData.projectName')?.hasError('invalidProjectName') && projectForm.get('projectData.projectName')?.touched">This
+                    Name cannot be used</span>
+                <span class="text-danger"
+                    *ngIf="projectForm.get('projectData.projectName')?.hasError('asyncInvalidProjectName') && projectForm.get('projectData.projectName')?.touched">This
+                    Name cannot be used</span>
+
+            </div> -->
+
+            <div>
+                <label class="form-label" for="name">Project Name</label>
+                <input type="text" class="form-control" formControlName="projectName">
+                <div class="text-danger"
+                    *ngIf="(isSubmitted || projectForm.controls.projectData.controls['projectName']['touched']) && projectForm.controls.projectData.controls['projectName'].errors !== null">
+                    <span
+                        *ngIf="projectForm.controls['projectData'].controls['projectName']['errors']['required']">Enter
+                        the project name</span>
+                    <span
+                        *ngIf="this.projectForm.controls.projectData.controls['projectName']['errors']['minlength']">Enter
+                        Atleast 10 characters</span>
+                    <span
+                        *ngIf="this.projectForm.controls.projectData.controls['projectName']['errors']['maxlength']">Enter
+                        less than 20 characters</span>
+                </div>
+            </div>
+
+            <div>
+                <label>Email</label>
+                <input type="" class="form-control" formControlName="email">
+                <div class="text-danger"
+                    *ngIf="(isSubmitted || projectForm.controls.projectData.controls['email']['touched']) &&projectForm.controls.projectData.controls['email'].errors !== null">
+                    <!-- <span class="text-danger"
+                    *ngIf="projectForm.get('projectData.email')?.hasError('required') && projectForm.get('projectData.email')?.touched">
+                    Enter Valid Email</span> -->
+                    <span class="text-danger"
+                        *ngIf="projectForm.controls['projectData'].controls['email']['errors']['required']">email is
+                        required</span>
+                    <span class="text-danger"
+                        *ngIf="projectForm.controls.projectData.controls['email']['errors']['email'] || projectForm.controls.projectData.controls['email']!['errors']['pattern']">Enter
+                        valid email</span>
+                </div>
+
+            </div>
+
+
+            <div>
+                <label for="projectStatus">Project Status</label>
+                <select name="" class="form-control" formControlName="projectStatus">
+                    <option value="stable">Stable</option>
+                    <option value="critical">Critical</option>
+                    <option value="finished">Finished</option>
+                </select>
+                <p class="text-danger"
+                    *ngIf="projectForm.get('projectData.projectStatus')?.hasError('required') && projectForm.get('projectData.projectStatus')?.touched">
+                    Please Select appropriate option</p>
+
+            </div>
+
+        </div>
+
+        <div>
+            <label>Project Estimate</label>
+            <input type="text" formControlName="projectEstimate">
+            <div class="text-danger" *ngIf="projectForm.controls['projectEstimate']?.errors !== null">
+                <span *ngIf="projectForm.controls['projectEstimate']['errors']['required']">Estimate is required</span>
+                <span *ngIf="projectForm.controls['projectEstimate']['errors']['pattern']">Enter numbers only</span>
+            </div>
+        </div>
+
+        <br>
+
+        <div formArrayName="projectOwner">
+            <label>Project Owner</label>
+            <div *ngFor="let control of projectForm.controls.projectOwner['controls']; let i= index">
+                <input type="text" [formControlName]="i">
+            </div>
+
+            <button class="btn btn-primary" (click)="addOwner()">
+                Add Owner
+            </button>
+        </div>
+        <br>
+
+        <div formArrayName="employees">
+            <label>Developers</label>
+            <div *ngFor="let control of employees.controls; let i= index" [formGroupName]="i">
+                <input type="text" formControlName="name" placeholder="enter the employee name">
+                <input type="text" formControlName="department" placeholder="department">
+                <input type="text" formControlName="experience" placeholder="experience">
+                <button class="btn btn-danger" (click)="removeEmp(i)">Remove Employee</button>
+            </div>
+            <button class="btn btn-primary" (click)="addEmp()">
+                Add Employee
+            </button>
+            <br><br>
+        </div>
+
+        <br>
+        <div formArrayName="managers">
+            <label>Manager</label>
+            <div *ngFor="let control of projectForm.controls.managers['controls']; let i = index" [formGroupName]="i">
+                <input type="text" formControlName="name">
+                <input type="text" formControlName="age">
+            </div>
+        </div>
+        <br>
+
+
+        <button type="submit" (click)="submitProject()" class="btn btn-primary">Create Project</button>
+    </form>
+</div>
+
+<div>
+    <div *ngFor="let employee of employeeData; let i = index">
+        {{employee.name}} <br>
+        {{employee.department}} <br>
+        {{employee.experience}}
+    </div>
+</div>

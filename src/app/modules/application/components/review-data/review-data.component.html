@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row pt-5">
+
+        <div class="col-md-6">
+
+            <div class="d-flex">
+                <h3>Personal Details</h3>
+                <button class="btn btn-success ms-5" (click)="navigateToPersonalDetails()">Edit Personal
+                    Details</button>
+            </div>
+            <div class="form-outline">
+                <label class="form-label" for="typePhone">First Name :</label>
+                <input type="text" id="fName" class="form-control" [(value)]="fName" readonly />
+            </div>
+            <br>
+
+            <div class="form-outline">
+                <label class="form-label" for="typePhone">Last Name :</label>
+                <input type="text" id="lName" class="form-control" [(value)]="lName" readonly />
+            </div>
+            <br>
+
+            <div class="form-outline">
+                <label class="form-label" for="typePhone">Email-Id :</label>
+                <input type="email" id="emailId" class="form-control" [(value)]="email" readonly />
+            </div>
+            <br>
+
+            <div class="form-outline">
+                <label class="form-label" for="typePhone">Mobile No. :</label>
+                <input type="tel" id="mobileNumer" class="form-control" [(value)]="mobileNumber" readonly />
+            </div>
+            <br>
+
+        </div>
+
+        <div class="col-md-6">
+            <div class="d-flex">
+                <h3>Address Details</h3>
+                <button class="btn btn-success ms-5" (click)="navigateToAddressDetails()">Edit Address Details</button>
+            </div>
+            <div class="form-outline">
+                <label class="form-label" for="typePhone">Street :</label>
+                <input type="tel" id="street" class="form-control" [(value)]="street" readonly />
+            </div>
+            <br>
+
+            <div class="form-outline">
+                <label class="form-label" for="typePhone">City :</label>
+                <input type="tel" id="city" class="form-control" [(value)]="city" readonly />
+            </div>
+            <br>
+
+            <div class="form-outline">
+                <label class="form-label" for="typePhone">State:</label>
+                <input type="tel" id="state" class="form-control" [(value)]="state" readonly />
+            </div>
+            <br>
+
+        </div>
+
+    </div>
+</div>

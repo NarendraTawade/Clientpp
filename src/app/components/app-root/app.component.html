@@ -1,0 +1,16 @@
+<div class="container-fluid px-0">
+  <app-header></app-header>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 px-0">
+      <app-side-nav></app-side-nav>
+    </div>
+    <div class="col-md-10">
+
+      <div *ngFor="let item of myObj ; let i = index" >{{ i}}</div>  
+<router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+

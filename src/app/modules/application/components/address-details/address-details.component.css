@@ -1,0 +1,21 @@
+label{
+    font-weight: 600;
+}
+
+.next-btn{
+    float: right;
+    padding: 10px 30px;
+    background-color: #0646f8;
+    border: none;
+    margin: 30px 50px 0 0;
+    color: #ffffff;
+}
+
+.back-btn{
+    float: left;
+    padding: 10px 30px;
+    background-color: #0646f8;
+    border: none;
+    margin: 30px 50px 0 0;
+    color: #ffffff;
+}
